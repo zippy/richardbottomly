@@ -35,4 +35,17 @@ print $msg;
 print "TOTAL: $eth ETH\n";
 open(my $fh, '>', $fname);
 print $fh "{\"eth\":$eth,\"startBlock\":".($start_block+1)."}";
-close $fh
+close $fh;
+
+&post("test");
+
+my $PLAYBOOKS_HOME = "/root/playbooks";
+my $BOT_VARS = "richard.bottomly";
+sub post {
+    my $msg = shift;
+    my $cmd = <<"END_CMD";
+ansible-playbook -i ",localhost" -c local $PLAYBOOKS_HOME/mattermost-ansible/mattermost-post.yml \
+        --extra-vars="@/root/playbooks/mattermost-ansible/mattermost-post_$BOT_VARS.vars" \
+        --extra-vars="mattermost_post_text='$msg'"
+END_CMD
+}
