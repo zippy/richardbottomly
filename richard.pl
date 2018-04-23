@@ -34,8 +34,8 @@ sub check {
 	    $eth += $v;
 	    $msg .= << "EOM";
 | **Amount** | **$v ETH** |
-|------------|------------|
-| **From**   | **$tx->{'from'}** |
+|-|-|
+| **From** | **$tx->{'from'}** |
 | Running Total | $eth ETH |
 EOM
 
