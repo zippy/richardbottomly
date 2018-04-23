@@ -40,7 +40,7 @@ sub check {
 | **Amount** | **$v ETH** |
 |-|-|
 | **From** | **$tx->{'from'}** |
-| Running Total | $eth ETH |
+| Total | $eth ETH |
 
 EOM
 
